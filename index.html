@@ -20,7 +20,7 @@
       </div>
       <div data-key="68" class="key hexagon">
         <kbd>E<dd></dd></kbd>
-        <span class="sound">e</span>
+        <span class="sound">d</span>
       </div>
       <div data-key="70" class="key hexagon">
         <kbd>F</kbd>
@@ -64,6 +64,7 @@
         const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
         if (!audio) return;
 
+        console.log(e);
         key.classList.add('playing');
         audio.currentTime = 0;
         audio.play();
