@@ -2,44 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>JavaScript Piano</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-
+    <div class="page-header">
+      <h1 class="title">JavaScript Piano</h1>
+    </div>
+    <p class="subtitle">Play the notes with the corresponding keys on your
+      keyboard. Enjoy!</p>
     <div class="keys">
-      <div data-key="65" class="key hexagon">
-        <kbd>C</kbd>
-        <span class="sound">a</span>
+      <!-- C4 -->
+      <div data-key="65" class="key">
+        <div class="key-wrapper">
+          <kbd>C</kbd>
+          <span class="sound">a</span>
+        </div>
       </div>
-      <div data-key="83" class="key hexagon">
-        <kbd>D</kbd>
-        <span class="sound">s</span>
+      <div class="key__black"></div>
+      <!-- D -->
+      <div data-key="83" class="key">
+        <div class="key-wrapper">
+          <kbd>D</kbd>
+          <span class="sound">s</span>
+        </div>
       </div>
-      <div data-key="68" class="key hexagon">
-        <kbd>E</kbd>
-        <span class="sound">d</span>
+      <div class="key__black"></div>
+      <!-- E -->
+      <div data-key="68" class="key border-right">
+        <div class="">
+          <kbd>E</kbd>
+          <span class="sound">d</span>
+        </div>
       </div>
-      <div data-key="70" class="key hexagon">
-        <kbd>F</kbd>
-        <span class="sound">f</span>
+      <!-- F -->
+      <div data-key="70" class="key">
+        <div class="key-wrapper">
+          <kbd>F</kbd>
+          <span class="sound">f</span>
+        </div>
       </div>
-      <div data-key="74" class="key hexagon">
-        <kbd>G</kbd>
-        <span class="sound">j</span>
+      <div class="key__black"></div>
+      <!-- G -->
+      <div data-key="74" class="key">
+        <div class="key-wrapper">
+          <kbd>G</kbd>
+          <span class="sound">j</span>
+        </div>
       </div>
-      <div data-key="75" class="key hexagon">
-        <kbd>A</kbd>
-        <span class="sound">k</span>
+      <div class="key__black"></div>
+      <!-- A -->
+      <div data-key="75" class="key">
+        <div class="key-wrapper">
+          <kbd>A</kbd>
+          <span class="sound">k</span>
+        </div>
       </div>
-      <div data-key="76" class="key hexagon">
-        <kbd>B</kbd>
-        <span class="sound">l</span>
+      <div class="key__black"></div>
+      <!-- B -->
+      <div data-key="76" class="key border-right">
+        <div class="key-wrapper">
+          <kbd>B</kbd>
+          <span class="sound">l</span>
+        </div>
       </div>
-      <div data-key="186" class="key hexagon">
-        <kbd>C</kbd>
-        <span class="sound">;</span>
+      <!-- C5 -->
+      <div data-key="186" class="key">
+        <div class="key-wrapper">
+          <kbd>C</kbd>
+          <span class="sound">;</span>
+        </div>
       </div>
     </div>
 
@@ -52,33 +85,13 @@
     <audio data-key="76" src="sounds/Piano.ff.B4.wav"></audio>
     <audio data-key="186" src="sounds/Piano.ff.C5.wav"></audio>
 
-    <script>
-      function removeTransition(e) {
-        if (e.propertyName !== 'transform') return;
-        e.target.classList.remove('playing');
-      }
-
-      function playSound(e) {
-        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-        if (!audio) return;
-
-        key.classList.add('playing');
-        audio.currentTime = 0;
-        audio.play();
-        console.log(e);
-      }
-
-      const keys = Array.from(document.querySelectorAll('.key'));
-      keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-      window.addEventListener('keydown', playSound);
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
 
-<!-- NOTE: Could not console.log(e.keyCode) -->
-
-<!-- IDEA: Change keys -->
+<!-- IDEA: Modulate keys -->
 <!-- IDEA: Fully chromatic -->
 <!-- IDEA: Alternate tunings -->
 <!-- IDEA: Add octave switch keys -->
+
+<!-- IDEA: Add touch screen capabilities -->
